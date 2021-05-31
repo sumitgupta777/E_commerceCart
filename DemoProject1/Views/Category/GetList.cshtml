@@ -1,0 +1,31 @@
+﻿@model IEnumerable<DemoProject1.Models.Category>
+
+@{
+    ViewData["Title"] = "GetList";
+}
+
+<h1>Category List</h1>
+
+
+    <div class="row pt-4">
+        <div class="col-6">
+            <a asp-controller="Category" asp-action="AddCategory" class="btn btn-primary" style="font-size:20px;">
+                Create New Category
+            </a>
+        </div>
+       
+    </div>
+<br />
+<br />
+<br />
+
+
+
+    @foreach (var item in Model)
+    {
+        <h4><a asp-controller="Products" asp-route-Id="@item.Id" asp-action="PGetList">@item.CategoryName</a></h4>
+
+        <hr />
+
+    }
+

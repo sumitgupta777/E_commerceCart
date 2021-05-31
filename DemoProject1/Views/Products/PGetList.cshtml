@@ -1,0 +1,50 @@
+﻿@model IEnumerable<DemoProject1.Models.Products>
+
+@{
+    ViewData["Title"] = "PGetList";
+}
+
+<h1>@ViewBag.Heading - List</h1>
+<br />
+<p >
+    <a asp-action="AddProduct" asp-route-Id="@ViewBag.CatId" class="btn btn-primary" style="font-size:1.2em;">Create New @ViewBag.Heading</a>
+</p>
+<br />
+
+<div class="row pb-3 backgroundWhite">
+
+    @foreach (var item in Model)
+    {
+        <div class="col-lg-3 col-md-6">
+            <div class="row p-2">
+                <div class="col-12 p-1" style="border:1px solid #008cba; border-radius:5px;">
+                    <div class="card" style="border: 0px; height:480px">
+                        <img src="~/Images/@item.ProductImg" class="card-img-top rounded" height="220" width="85" />
+                        <div class="pl-1">
+                            <br />
+                            <p class="card-title h5" ><b style="color:blue;font-size:1.1em">@item.Name</b></p>
+                            <hr />
+                            <p class="card-title h5"><b style="color:#2c3e50">Rs - @item.Price</b></p>
+                            <p class="card-title h5" ><b style="color:#2c3e50">@item.Description</b></p>
+
+                        </div>
+                        <div style="padding-left:4px;">
+                            @Html.DisplayFor(modelItem => item.IsActive)
+                        </div>
+                    </div>
+                    @*<div>
+                            Details button
+                        </div>*@
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+   
+
+@*<td>
+    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+</td>*@

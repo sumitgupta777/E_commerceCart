@@ -1,0 +1,67 @@
+﻿@model DemoProject1.ViewModel.ProductsViewModel
+
+@{
+    ViewData["Title"] = "AddProduct";
+}
+
+<h1>Add Product</h1>
+
+<br />
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" asp-action="AddProduct"  enctype="multipart/form-data"  asp-route-Id="@ViewBag.CatId" >
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Quantity" class="control-label"></label>
+                <input asp-for="Quantity" class="form-control" />
+                <span asp-validation-for="Quantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <textarea name="description" cols="40" rows="3" asp-for="Description" class="form-control"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
+                </label>
+            </div>
+
+            <div class="form-control">
+                <label class="control-label">Choose Image</label>
+                <input asp-for="ProductImg" class="form-control" />
+                <span asp-validation-for="ProductImg" class="text-danger"></span>
+            </div>
+            <br />
+            <br />
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Add" class="btn btn-primary w-50" />
+            </div>
+        </form>
+        <br />
+        <br />
+        <div>
+            <a asp-action="GetList" asp-controller="Category" >Back to List</a>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

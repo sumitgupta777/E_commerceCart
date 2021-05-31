@@ -1,0 +1,78 @@
+﻿@model IEnumerable<DemoProject1.ViewModel.OrderViewModel>
+
+@{
+    ViewData["Title"] = "PlaceOrder";
+    var temp = 0.0;
+}
+
+<h1>Order Summary</h1>
+<br />
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Total)
+            </th>
+           
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Total)
+            </td>
+            
+        </tr>
+}
+    </tbody>
+</table>
+<br />
+<br />
+
+<label style="font-size:1.2em" >Order Total : </label>
+@foreach(var item in Model)
+{
+    temp += item.Total;   
+}
+<p style="font-size:1.2em">Rs - @temp</p>
+
+<br />
+<br />
+
+<div class="col-12  ml-4 mr-4 mb-1 p-1 d-flex justify-content-around">
+    <div class="col-lg-5 p-2">
+        <a class="btn btn-primary" asp-controller="Home" asp-action="Index" style="font-size:1.2em">Go to Homepage</a>
+    </div>
+    <div class="col-2">
+
+    </div>
+    <div class="col-5 p-2">
+        <a class="btn btn-primary"  style="font-size:1.2em; color:white;">Confirm Payment</a>
+    </div>
+</div>

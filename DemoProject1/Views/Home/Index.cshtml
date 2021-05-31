@@ -1,0 +1,40 @@
+﻿@model IEnumerable<DemoProject1.Models.Products>
+
+@{
+    ViewData["Title"] = "HomePafe";
+}
+<br />
+<h1>Home Page - All Products</h1>
+<br />
+<br />
+
+<div class="row pb-3 backgroundWhite">
+
+    @foreach (var item in Model)
+    {
+        <div class="col-lg-3 col-md-6">
+            <div class="row p-2">
+                <div class="col-12 p-1" style="border:1px solid #008cba; border-radius:5px;">
+                    <div class="card" style="border: 0px; height:465px">
+                        <div style="height:400px">
+                            <img src="~/Images/@item.ProductImg" class="card-img-top rounded" height="175" width="30" />
+                            <div class="pl-1">
+                                <br />
+                                <p class="card-title h5"><b style="color:blue;font-size:1.1em">@item.Name</b></p>
+                                <hr />
+                                <p class="card-title h5"><b style="color:#2c3e50">Rs - @item.Price</b></p>
+                                <p class="card-title h5"><b style="color:#2c3e50">@item.Description</b></p>
+
+                            </div>
+                            <div style="padding-left:4px;">
+                                @Html.DisplayFor(modelItem => item.IsActive)
+                            </div>
+                        </div>
+                        <a class="btn btn-primary text-center ml-3 mr-3 mt-1" asp-controller="Cart" asp-action="AddInShoppingCart" asp-route-Id="@item.Id" style="color:white">Add TO Cart</a>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    }
+</div>
